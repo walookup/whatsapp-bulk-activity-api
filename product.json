@@ -1,0 +1,77 @@
+{
+  "name": "WhatsApp Bulk Activity Check",
+  "brand": "WA Lookup",
+  "repository": "walookup/whatsapp-bulk-activity-api",
+  "description": "Registration status plus last-active time, active days and the Business flag, so you can tell live numbers from dormant ones across a whole list.",
+  "official_site": "https://walookup.com",
+  "landing_page": "https://walookup.com/products/ws_active_batch",
+  "canonical_docs": "https://walookup.com/api-docs",
+  "base_url": "https://walookup.com",
+  "auth": {
+    "type": "api_key",
+    "header": "X-API-Key"
+  },
+  "mode": "async-bulk",
+  "product": "ws_active_batch",
+  "identifier_kind": "phone",
+  "requires_country": true,
+  "endpoints": {
+    "submit": {
+      "method": "POST",
+      "path": "/api/v1/bulk-tasks"
+    },
+    "status": {
+      "method": "GET",
+      "path": "/api/v1/bulk-tasks/{id}"
+    },
+    "balance": {
+      "method": "GET",
+      "path": "/api/v1/balance"
+    }
+  },
+  "limits": {
+    "min_items": 1000,
+    "max_items": 100000,
+    "poll_interval_seconds": 30,
+    "file_formats": [
+      "txt",
+      "csv"
+    ]
+  },
+  "result_fields": [
+    {
+      "name": "number",
+      "example": "17253100591",
+      "description": "The submitted number."
+    },
+    {
+      "name": "activated",
+      "example": "yes",
+      "description": "Whether the number is registered on WhatsApp."
+    },
+    {
+      "name": "business",
+      "example": "no",
+      "description": "Whether this is a WhatsApp Business account."
+    },
+    {
+      "name": "activetime",
+      "example": "2026-08-01 16:15:49",
+      "description": "The most recent activity time observed."
+    },
+    {
+      "name": "activedays",
+      "example": "33",
+      "description": "Days since that activity — smaller is more recent."
+    }
+  ],
+  "statuses": [
+    "processing",
+    "success",
+    "failed"
+  ],
+  "pricing_url": "https://walookup.com/pricing",
+  "maintainer": "WA Lookup",
+  "license": "MIT",
+  "last_reviewed": "2026-09-22"
+}
